@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.homecard{
+  margin-top: 2rem;
+  margin-left: 1rem;
+  width: 15rem; 
+  height: 20rem;
+}
+
+.homeRow{
+  display:flex; 
+  flex-direction:row;
+}
