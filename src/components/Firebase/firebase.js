@@ -1,5 +1,6 @@
 import app from 'firebase/app';
 
+
 var config = {
   apiKey: "AIzaSyCri31YveE6WMCjfA9UMJH7-NdVU1ZJbu8",
   authDomain: "payjunction-4be6a.firebaseapp.com",

@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import  { FirebaseContext } from './Firebase';
+import firebase from "firebase";
 
 class RequestCard extends Component{
-  
- 
   uuidv4() {
     var uuidTemp = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -14,7 +12,7 @@ class RequestCard extends Component{
   }
   createRequest(){
 
-    var db = this.firebase.firestore()
+    var db = firebase.firestore()
     
     var paymentAmount = document.getElementById("paymentAmount").value;
     var phoneNumber = document.getElementById("phoneNumber").value;
@@ -40,10 +38,7 @@ class RequestCard extends Component{
   
   }
   render(){
-    
-    return (
-      
-
+      return (
       <div className="card" style={{width: "500px",height: "500px", left: "50%",marginLeft: "-250px",marginTop:"50px",display: "inline-block"}}>
   
        
@@ -55,12 +50,13 @@ class RequestCard extends Component{
           <input id="phoneNumber" type="text" placeholder="Phone Number" name="uname" required style= {{borderRadius: "5px",width: "80%", padding: "12px 20px", margin: "12px 0", marginTop: "8px", display: "inline-block", border: "1px solid #ccc", boxSizing: "border-box"}}/>
           <input id="requestDescription" type="text" placeholder="Description" name="uname" required style= {{borderRadius: "5px",width: "80%", padding: "12px 20px", margin: "12px 0", marginTop:"8px", display: "inline-block", border: "1px solid #ccc", boxSizing: "border-box"}}/>
           <br /> 
-          <a id="pay" href="request" className="btn btn-info" style = {{ width: "350px",height: "65px",fontSize: "16px",paddingTop: "22px",marginTop:"20px"}} onClick={()=> this.createRequest()} >Send Request</a>
+          <a id="pay"  className="btn btn-info" style = {{ width: "350px",height: "65px",fontSize: "16px",paddingTop: "22px",marginTop:"20px"}} onClick={()=> this.createRequest()} >Send Request</a>
           <a id="return" href="home" className="btn btn-light" style = {{width:"350px",height:"65px",fontSize:"16px",paddingTop: "22px",marginTop: "-99px",visibility: "hidden"}}> Return to Home</a>
         </div>
     </div>
     );
   }
+  
 }
 
 export default RequestCard;
