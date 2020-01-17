@@ -7,7 +7,7 @@ import HomePage from './pages/Home';
 import RequestPage from './pages/Request';
 import IncompletePage from './pages/Incomplete';
 import LoginPage from "./pages/Login"
-
+import PayPage from "./pages/Pay"
 class App extends Component{
   render(){
     return (
@@ -18,6 +18,7 @@ class App extends Component{
           <Route path="/request" exact component={RequestPage} />
           <Route path="/incomplete" exact component={IncompletePage}/>
           <Route path="/login" exact component={LoginPage}/>
+          <Route path="/pay" exact component={PayPage}/>
         </Router>
       </div>
     );

@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import RequestCard from "../components/RequestCard"
+import PayCard from '../components/PayCard'
+
 class Home extends Component{
   render(){
     return (
-      <div className='homeRow'>
-        <RequestCard/>
+      <div>
+        <PayCard style={{topMargin:"10px",display:"inline-block"}}/>
       </div>  
     );
   }
