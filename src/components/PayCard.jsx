@@ -1,6 +1,65 @@
 import React, {Component} from 'react';
 import Woodstocks from "../images/Woodstock.jpeg"
 class PayCard extends Component{
+  onBuyClicked() {
+    if (!window.PaymentRequest) {
+      // PaymentRequest API is not available. Forwarding to
+      // legacy form based experience.
+      //location.href = '/checkout';
+      //return;
+    }
+  
+    // Supported payment methods
+    var supportedInstruments = [{
+        supportedMethods: ['basic-card'],
+        data: {
+          supportedNetworks: [
+            'visa', 'mastercard', 'amex', 'discover',
+            'diners', 'jcb', 'unionpay'
+          ]
+        }
+    }];
+  
+    var val = 24.50;//REPLACE WITH AMOUNT FROM GETPAYMENT REQ
+  
+    // Checkout details
+    var details = {
+      total: {
+        label: 'Total due',
+        amount: { currency: 'USD', value : val }
+      }
+    };
+  
+    // 1. Create a `PaymentRequest` instance
+    var request = new PaymentRequest(supportedInstruments, details);
+  
+    // 2. Show the native UI with `.show()`
+    request.show()
+    // 3. Process the payment
+    .then(result => {
+      console.log('result is: ' , result)
+      // POST the payment information to the server
+      return fetch('/pay', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...result.toJSON(),...{amountBase:val}})
+      }).then(response => {
+        // 4. Display payment results
+        if (response.status === 200) {
+          // Payment successful
+          return result.complete('success');
+        } else {
+          // Payment failure
+          return result.complete('fail');
+        }
+      }).catch(() => {
+        return result.complete('fail');
+      });
+    });
+  }
   render(){
     return(
       <div className="card" style={{width:"450px",height:"525px", marginTop:"40px",display: "inline-block"}}>
