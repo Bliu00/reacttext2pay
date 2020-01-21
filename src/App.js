@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
+
 import NavbarPage from './components/NavBarPage';
 import HomePage from './pages/Home';
 import RequestPage from './pages/Request';
