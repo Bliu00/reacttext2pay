@@ -7,8 +7,10 @@ import NavbarPage from './components/NavBarPage';
 import HomePage from './pages/Home';
 import RequestPage from './pages/Request';
 import IncompletePage from './pages/Incomplete';
-import LoginPage from "./pages/Login"
+import LoginPage from "./components/Login"
 import PayPage from "./pages/Pay"
+import AddInfo from "./pages/AddInfo"
+
 class App extends Component{
   render(){
     return (
@@ -20,6 +22,7 @@ class App extends Component{
           <Route path="/incomplete" exact component={IncompletePage}/>
           <Route path="/login" exact component={LoginPage}/>
           <Route path="/pay" exact component={PayPage}/>
+          <Route path="/addinfo" exact component={AddInfo}/>
         </Router>
       </div>
     );
