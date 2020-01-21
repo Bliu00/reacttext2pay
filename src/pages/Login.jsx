@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import firebase from "firebase";
 
+
 class Login extends Component {
   // <!-- after successful login, should take you straight to home.html -->
   callGoogleSignIn(){
@@ -30,10 +31,11 @@ class Login extends Component {
     });
   firebase.auth().onAuthStateChanged(user => {
   if(user) {
-    window.location = 'home'; //After successful login, user will be redirected to home.html
+    window.location = '/'; //After successful login, user will be redirected to home.html
   }
 });
 }
+
 
 // <!-- sign in with google, but takes you to the addinfo page after -->
 callGoogleSignUp(){
@@ -67,14 +69,22 @@ callGoogleSignUp(){
   }
 });
 }
+
 render(){
   return (
     <div >
-    <button style={{margin:"50px"}} className="btn btn-info" >Sign In With Google</button>
-    <button style={{margin:"50px"}} className="btn btn-light" >Sign Up With Google</button>
+    <button onClick={this.callGoogleSignIn} style={{margin:"50px"}} className="btn btn-info" >Sign In With Google</button>
+    <button onClick={this.callGoogleSignUp} style={{margin:"50px"}} className="btn btn-light" >Sign Up With Google</button>
   </div>
-);
-}
+  );
+  // return (
+  //   <div className="App">
+  //     <header className="App-header">
+  //         <button onClick={this.callGoogleSignUp}>Sign in with Google</button>
+  //     </header>
+  //   </div>
+  // );
+  }
 }
 
 export default Login;

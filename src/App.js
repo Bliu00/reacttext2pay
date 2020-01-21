@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-
+import 'firebase/auth';
 
 import NavbarPage from './components/NavBarPage';
 import HomePage from './pages/Home';
