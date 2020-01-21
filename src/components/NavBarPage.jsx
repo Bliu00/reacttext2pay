@@ -61,7 +61,7 @@ render() {
                   <MDBDropdownItem href="#!">Benjamin Liu</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Account</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Settings</MDBDropdownItem>
-                  <MDBDropdownItem href="/login">Log Out</MDBDropdownItem>
+                  <MDBDropdownItem href="/">Log Out</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

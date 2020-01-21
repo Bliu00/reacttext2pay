@@ -8,7 +8,6 @@ import MainPage from './pages/MainPage';
 import HomePage from './pages/Home';
 import RequestPage from './pages/Request';
 import IncompletePage from './pages/Incomplete';
-import LoginPage from "./pages/MainPage"
 import PayPage from "./pages/Pay"
 import AddInfo from "./pages/ExtraInfo"
 
@@ -22,7 +21,7 @@ class App extends Component{
           <Route path="/home" exact component ={HomePage}/>
           <Route path="/request" exact component={RequestPage} />
           <Route path="/incomplete" exact component={IncompletePage}/>
-          <Route path="/login" exact component={LoginPage}/>
+          <Route path="/login" exact component={MainPage}/>
           <Route path="/pay" exact component={PayPage}/>
           <Route path="/addinfo" exact component={AddInfo}/>
         </Router>
