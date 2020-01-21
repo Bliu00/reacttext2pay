@@ -4,20 +4,22 @@ import './App.css';
 import 'firebase/auth';
 
 import NavbarPage from './components/NavBarPage';
+import MainPage from './pages/MainPage';
 import HomePage from './pages/Home';
 import RequestPage from './pages/Request';
 import IncompletePage from './pages/Incomplete';
-import LoginPage from "./components/Login"
+import LoginPage from "./pages/MainPage"
 import PayPage from "./pages/Pay"
-import AddInfo from "./pages/AddInfo"
+import AddInfo from "./pages/ExtraInfo"
 
 class App extends Component{
   render(){
     return (
       <div className="App">
-        <NavbarPage />
+        {/* <NavbarPage /> */}
         <Router>
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={MainPage} />
+          <Route path="/home" exact component ={HomePage}/>
           <Route path="/request" exact component={RequestPage} />
           <Route path="/incomplete" exact component={IncompletePage}/>
           <Route path="/login" exact component={LoginPage}/>

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import firebase from "firebase";
+import NavbarPage from '../components/NavBarPage';
+
 
 class AddInfo extends Component {
 validateEmail(email) {
@@ -30,7 +32,7 @@ saveInfo(){
       PhoneNumber:phone
     }).then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
-        window.location = '/';
+        window.location = '/home';
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);

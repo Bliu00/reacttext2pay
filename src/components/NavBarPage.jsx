@@ -24,7 +24,7 @@ render() {
           <MDBNavbarNav left>
             <MDBNavItem>
               <MDBNavLink to="" onClick={() =>{
-                window.location = '/';
+                window.location = '/home';
             }}>Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
