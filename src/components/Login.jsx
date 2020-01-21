@@ -65,7 +65,7 @@ callGoogleSignUp(){
     });
   firebase.auth().onAuthStateChanged(user => {
   if(user) {
-    window.location = "addinfo"; //After successful signup, user will be redirected to addinfo.html
+    window.location = "addinfo"; //After successful signup, user will be redirected to /addinfo
   }
 });
 }
@@ -73,8 +73,8 @@ callGoogleSignUp(){
 render(){
   return (
     <div >
-    <button onClick={()=> this.callGoogleSignIn()} style={{margin:"50px"}} className="btn btn-info" >Sign In With Google</button>
-    <button onClick={()=> this.callGoogleSignUp()} style={{margin:"50px"}} className="btn btn-light" >Sign Up With Google</button>
+    <button id="elgoog" onClick={()=> this.callGoogleSignIn()} style={{margin:"50px"}} className="btn btn-info" >Sign In With Google</button>
+    <button id="elgoog" onClick={()=> this.callGoogleSignUp()} style={{margin:"50px"}} className="btn btn-light" >Sign Up With Google</button>
   </div>
   );
   }
