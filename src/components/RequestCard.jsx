@@ -50,7 +50,7 @@ class RequestCard extends Component{
           <input id="phoneNumber" type="text" placeholder="Phone Number" name="uname" required style= {{borderRadius: "5px",width: "80%", padding: "12px 20px", margin: "12px 0", marginTop: "8px", display: "inline-block", border: "1px solid #ccc", boxSizing: "border-box"}}/>
           <input id="requestDescription" type="text" placeholder="Description" name="uname" required style= {{borderRadius: "5px",width: "80%", padding: "12px 20px", margin: "12px 0", marginTop:"8px", display: "inline-block", border: "1px solid #ccc", boxSizing: "border-box"}}/>
           <br /> 
-          <a id="pay"  className="btn btn-info" style = {{ width: "350px",height: "65px",fontSize: "16px",paddingTop: "22px",marginTop:"20px"}} onClick={()=> this.createRequest()} >Send Request</a>
+          <a  id="pay"  className="btn btn-info" style = {{ width: "350px",height: "65px",fontSize: "16px",paddingTop: "22px",marginTop:"20px"}} onClick={()=> this.createRequest()} >Send Request</a>
           <a id="return" href="home" className="btn btn-light" style = {{width:"350px",height:"65px",fontSize:"16px",paddingTop: "22px",marginTop: "-99px",visibility: "hidden"}}> Return to Home</a>
         </div>
     </div>

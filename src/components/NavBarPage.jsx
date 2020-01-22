@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon,MDBInput, MDBCol} from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
+import firebase from "firebase";
 
 class NavbarPage extends Component {
 state = {
@@ -10,6 +11,15 @@ state = {
 
 toggleCollapse = () => {
   this.setState({ isOpen: !this.state.isOpen });
+}
+
+signOut(){
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+    window.location = '/'; 
+  }).catch(function(error) {
+    // An error happened.
+  });
 }
 
 render() {
@@ -24,7 +34,7 @@ render() {
           <MDBNavbarNav left>
             <MDBNavItem>
               <MDBNavLink to="" onClick={() =>{
-                window.location = '/';
+                window.location = '/home';
             }}>Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
@@ -61,7 +71,7 @@ render() {
                   <MDBDropdownItem href="#!">Benjamin Liu</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Account</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Settings</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Log Out</MDBDropdownItem>
+                  <MDBDropdownItem onClick={()=> this.signOut()}>Log Out</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>

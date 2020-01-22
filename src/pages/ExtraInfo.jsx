@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import TablePanel from '../components/TablePanel'
 import NavbarPage from '../components/NavBarPage'
+import AddInfo from '../components/AddInfo'
 
-
-class Home extends Component{
+class ExtraInfo extends Component{
   render(){
     return (
       <div >
         <NavbarPage />
-        <TablePanel style={{display:"inline-block"}}/>
+        <AddInfo/>
       </div>  
     );
   }
 }
-
-export default Home;
+export default ExtraInfo;
