@@ -22,7 +22,6 @@ signOut(){
   });
 }
 
-
 render() {
   return (
     <Router>
