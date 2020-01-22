@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PayCard from '../components/PayCard'
+import PayCard from '../components/PayCard';
 
 class Home extends Component{
   render(){

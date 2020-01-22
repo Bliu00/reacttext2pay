@@ -19,6 +19,7 @@ class App extends Component{
           <Route path="/incomplete" exact component={IncompletePage}/>
           <Route path="/login" exact component={LoginPage}/>
           <Route path="/pay" exact component={PayPage}/>
+          <Route path="/pay/:uuid" component={PayPage}/>
         </Router>
       </div>
     );

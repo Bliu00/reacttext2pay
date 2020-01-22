@@ -1,7 +1,35 @@
 import React, {Component} from 'react';
 import Woodstocks from "../images/Woodstock.jpeg"
+import firebase from "firebase";
+
+
 class PayCard extends Component{
+
+  getPaymentRequest(paymentRequestID){
+    var db = firebase.firestore();
+    db.collection("paymentRequests").where("PaymentRequestID", "==", paymentRequestID)
+      .get()
+      .then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              var requestData = doc.data();
+              var amount = requestData.PaymentAmount;
+              var phoneNumber = requestData.PhoneNumber; 
+              var description = requestData.RequestDescription;
+              console.log("amount: ", amount, "phone number: ", phoneNumber);
+              document.getElementById("description").textContent = "@sdlkfsldkjf requests "+ amount+ " for "+ description; 
+          });
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      });
+  }
+
   render(){
+    var currentUUID = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+    console.log("THE MY VAR IS: "+ currentUUID);
+    this.getPaymentRequest(currentUUID);
+
     return(
       <div className="card" style={{width:"450px",height:"525px", marginTop:"40px",display: "inline-block"}}>
         <div className="view overlay" >
@@ -10,11 +38,10 @@ class PayCard extends Component{
             <div className="mask rgba-white-slight"></div>
           </a>
         </div>
-        <div className="card-body" style={{width: "450px",height:"200px"}} >
-          <h1 className="card-title" style = {{fontSize:"20px",textAlign: "center",marginTop: "5px"}}>Woodstock's Pizza</h1>
-          <p id="description" className="card-text" style = {{fontSize:"16px",textAlign: "center",marginTop: "18px"}}>@woodstockspizza requests $23.20 for 16" X-Large Cheese Pizza.</p>
+        <div className="card-body" style={{width: "450px",height:"200px"}}>
+          <h1 className="card-title" style = {{fontSize:"20px",textAlign: "center",marginTop: "5px"}}>Woodstocks Pizza</h1>
+          <p id="description" className="card-text" style = {{fontSize:"16px",textAlign: "center",marginTop: "18px"}}> Someone requests $23.20 for 16 X-Large Cheese Pizza.</p>
           <a id="decline" href="home" className="btn btn-light" style = {{ width:"300px",height:"60px",fontSize:"16px",paddingTop: "18px",marginTop: "10px"}} > No Thanks</a>
-
           <br /> 
           <a id="pay" href="#" className="btn btn-info" style = {{ width:"300px",height:"60px",fontSize: "16px", paddingTop: "18px",marginTop: "10px"}} onclick="fadeButton()" > Pay Now</a>
           <br />
