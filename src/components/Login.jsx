@@ -73,8 +73,8 @@ callGoogleSignUp(){
 render(){
   return (
     <div >
-    <button id="elgoog" onClick={()=> this.callGoogleSignIn()} style={{margin:"50px"}} className="btn btn-info" >Sign In With Google</button>
-    <button id="elgoog" onClick={()=> this.callGoogleSignUp()} style={{margin:"50px"}} className="btn btn-light" >Sign Up With Google</button>
+    <button onClick={()=> this.callGoogleSignIn()} style={{margin:"50px"}} className="btn btn-info" >Sign In With Google</button>
+    <button onClick={()=> this.callGoogleSignUp()} style={{margin:"50px"}} className="btn btn-light" >Sign Up With Google</button>
   </div>
   );
   }
