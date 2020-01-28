@@ -2,17 +2,6 @@
 import { PaymentRequestParams } from 'react-payment-request-api';
 
 const details: PaymentDetailsInit = {
-  displayItems: [{
-    label: 'Original donation amount',
-    amount: { currency: 'USD', value: '65.00' },
-  }, {
-    label: 'Friends and family discount',
-    amount: { currency: 'USD', value: '-10.00' },
-  }, {
-    label: 'Delivery tax',
-    pending: true,
-    amount: { currency: 'USD', value: '10.00' },
-  }],
   total: {
     label: 'Total due',
     amount: { currency: 'USD', value : '55.00' },
@@ -24,8 +13,11 @@ const getConfig = (supportedPaymentCards: string[], onShowSuccess: () => void) =
     {
       supportedMethods: ['basic-card'],
       data: {
-        supportedNetworks: ['visa', 'mastercard', 'diners'],
-      },
+        supportedNetworks: [
+          'visa', 'mastercard', 'amex', 'discover',
+          'diners', 'jcb', 'unionpay'
+        ]
+      }
     },
     {
       supportedMethods: ['https://android.com/pay'],
@@ -60,6 +52,7 @@ const getConfig = (supportedPaymentCards: string[], onShowSuccess: () => void) =
     requestPayerEmail: true,
     requestPayerPhone: true,
   },
+
   onShowSuccess: (result, resolve, reject): void => {
     /* tslint:disable-next-line:no-console */
     console.log('Result:', result);
