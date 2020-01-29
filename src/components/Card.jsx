@@ -7,8 +7,9 @@ class Card extends Component {
         return ( 
             <MDBCol>
                 <MDBCard className = "homecard">
-                <MDBCardImage className = "img-fluid"
-                src = "https://mdbootstrap.com/img/Photos/Others/images/43.jpg" waves />
+                <div>
+                    <img className="card-img-top" src={this.props.image} style= {{width:"100%",height:"130px"}} />
+                </div>
                     <MDBCardBody >
                         <MDBCardTitle > 
                             {this.props.title} 

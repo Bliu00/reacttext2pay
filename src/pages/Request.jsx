@@ -7,9 +7,9 @@ class Home extends Component{
     return (
       <div>
         <NavbarPage/>
-      <div className='homeRow'>
-        <RequestCard/>
-      </div>  
+        <div className='homeRow'>
+          <RequestCard/>
+        </div>  
       </div>
     );
   }

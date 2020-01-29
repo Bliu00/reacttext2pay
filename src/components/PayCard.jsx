@@ -4,6 +4,14 @@ import firebase from "firebase";
 
 
 class PayCard extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      amount: "00.00",
+      phoneNumber: "123456789",
+      description: "null" ,
+    }
+  }
 
   getPaymentRequest(paymentRequestID){
     var db = firebase.firestore();
@@ -13,11 +21,15 @@ class PayCard extends Component{
           querySnapshot.forEach(function(doc) {
               // doc.data() is never undefined for query doc snapshots
               var requestData = doc.data();
-              var amount = requestData.PaymentAmount;
-              var phoneNumber = requestData.PhoneNumber; 
-              var description = requestData.RequestDescription;
-              console.log("amount: ", amount, "phone number: ", phoneNumber);
-              document.getElementById("description").textContent = "@sdlkfsldkjf requests "+ amount+ " for "+ description; 
+              var tempAmount = requestData.PaymentAmount;
+              var tempPhoneNumber = requestData.PhoneNumber;
+              var tempDescription = requestData.RequestDescription;
+
+              this.setState({
+                amount: tempAmount,
+                phoneNumber: tempPhoneNumber,
+                description: tempDescription,
+              });
           });
       })
       .catch(function(error) {
@@ -25,11 +37,16 @@ class PayCard extends Component{
       });
   }
 
-  render(){
-    var currentUUID = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-    console.log("THE MY VAR IS: "+ currentUUID);
+  componentWillMount(){
+    //get UUID from current web URL
+    var currentUUID = window.location.href.substring    (window.location.href.lastIndexOf('/') + 1);
+    //gets request information using UUID
     this.getPaymentRequest(currentUUID);
+  }
 
+
+  render(){   
+           
     return(
       <div className="card" style={{width:"450px",height:"525px", marginTop:"40px",display: "inline-block"}}>
         <div className="view overlay" >
@@ -40,7 +57,7 @@ class PayCard extends Component{
         </div>
         <div className="card-body" style={{width: "450px",height:"200px"}}>
           <h1 className="card-title" style = {{fontSize:"20px",textAlign: "center",marginTop: "5px"}}>Woodstocks Pizza</h1>
-          <p id="description" className="card-text" style = {{fontSize:"16px",textAlign: "center",marginTop: "18px"}}> Someone requests $23.20 for 16 X-Large Cheese Pizza.</p>
+          <p id="description" className="card-text" style = {{fontSize:"16px",textAlign: "center",marginTop: "18px"}}> Someone requests ${this.state.amount} for {this.state.description}.</p>
           <a id="decline" href="home" className="btn btn-light" style = {{ width:"300px",height:"60px",fontSize:"16px",paddingTop: "18px",marginTop: "10px"}} > No Thanks</a>
           <br /> 
           <a id="pay" href="#" className="btn btn-info" style = {{ width:"300px",height:"60px",fontSize: "16px", paddingTop: "18px",marginTop: "10px"}} onclick="fadeButton()" > Pay Now</a>
