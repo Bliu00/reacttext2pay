@@ -7,13 +7,14 @@ class PayCard extends Component{
   constructor(props){
     super(props);
     this.state = {
+      status: "empty",
       amount: "00.00",
       phoneNumber: "123456789",
       description: "null" ,
     }
   }
-
-  getPaymentRequest(paymentRequestID){
+  getPaymentRequest(paymentRequestID,replaceState){
+    let currentComp = this;
     var db = firebase.firestore();
     db.collection("paymentRequests").where("PaymentRequestID", "==", paymentRequestID)
       .get()
@@ -24,8 +25,8 @@ class PayCard extends Component{
               var tempAmount = requestData.PaymentAmount;
               var tempPhoneNumber = requestData.PhoneNumber;
               var tempDescription = requestData.RequestDescription;
-
-              this.setState({
+              currentComp.setState({
+                status: "updated",
                 amount: tempAmount,
                 phoneNumber: tempPhoneNumber,
                 description: tempDescription,
@@ -38,17 +39,16 @@ class PayCard extends Component{
   }
 
   componentWillMount(){
+    
     //get UUID from current web URL
     var currentUUID = window.location.href.substring    (window.location.href.lastIndexOf('/') + 1);
     //gets request information using UUID
-    this.getPaymentRequest(currentUUID);
+    this.getPaymentRequest(currentUUID,this.replaceState);
   }
 
-
   render(){   
-           
     return(
-      <div className="card" style={{width:"450px",height:"525px", marginTop:"40px",display: "inline-block"}}>
+      <div className="card" style={{width:"450px",height:"525px", marginTop:"40px",display: "inline-block", visibility: this.state.status == "empty" ? "hidden": "visible"}}>
         <div className="view overlay" >
           <img class="card-img-top" src={Woodstocks} alt="Card image cap"style={{display: "inline-block", width:"125px",height:"125px",borderRadius:"75px",marginTop:"40px"}}></img>
           <a href="#!">
